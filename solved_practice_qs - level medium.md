@@ -49,3 +49,12 @@ select distinct p.patient_id, concat(p.patient_id, len(p.last_name), year(p.birt
 from patients p 
 join admissions a on p.patient_id = a.patient_id
 ```
+
+**Q.7 Display every patient's first_name. Order the list by the length of each name and then by alphabetically.**
+```sql
+select first_name
+from patients
+order by len(first_name), first_name asc
+```
+
+
