@@ -28,3 +28,12 @@ select concat(upper(last_name),',', lower(first_name)) as new_name_format
 from patients
 order by first_name desc
 ```
+
+**Q.5 Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'. Primary diagnosis is stored in the admissions table.**
+```sql
+select patient_id, first_name, last_name
+from patients
+where patient_id In 
+(select patient_id from admissions
+where diagnosis = 'Dementia')
+```
