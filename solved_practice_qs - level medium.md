@@ -56,5 +56,11 @@ select first_name
 from patients
 order by len(first_name), first_name asc
 ```
-
+**Q.8 Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.**
+```sql
+select patient_id, diagnosis
+from admissions
+group by diagnosis, patient_id
+having count(*)>1
+```
 
