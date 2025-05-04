@@ -76,4 +76,10 @@ select (Max(weight)-min(weight)) as weight_difference
 from patients
 where last_name = 'Maroni'
 ```
-
+**Q.11 Show all of the days of the month (1-31) and how many admission_dates occurred on that day. Sort by the day with most admissions to least admissions.**
+```sql
+select day(admission_date) as day_number, count(patient_id) as number_of_admissions
+from admissions
+group by day_number
+order by number_of_admissions desc
+```
