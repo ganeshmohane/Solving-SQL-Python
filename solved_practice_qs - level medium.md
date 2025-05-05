@@ -83,3 +83,10 @@ from admissions
 group by day_number
 order by number_of_admissions desc
 ```
+**Q.12 Show the city and the total number of patients in the city. Order from most to least patients and then by city name ascending.**
+```sql
+select city, count(*) as num_patients
+from patients
+group by city
+order by num_patients desc, city
+```
