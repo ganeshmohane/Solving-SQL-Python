@@ -90,3 +90,11 @@ from patients
 group by city
 order by num_patients desc, city
 ```
+**Q.13 Show all columns for patient_id 542's most recent admission_date.**
+```sql
+select * 
+from admissions
+where patient_id = 542
+order by admission_date desc
+limit 1
+```
