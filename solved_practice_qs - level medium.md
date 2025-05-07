@@ -98,11 +98,17 @@ where patient_id = 542
 order by admission_date desc
 limit 1
 ```
-Q.14 Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:**
+**Q.14 Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:**
 1. patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
 2. attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
 ```sql
 select patient_id, attending_doctor_id, diagnosis
 from admissions
 where ((patient_id % 2 != 0) and (attending_doctor_id in (1,5,19))) or ((attending_doctor_id like '%2%')  and (length(patient_id)=3))
+```
+**Q.15 Show unique birth years from patients and order them by ascending.**
+```sql
+select distinct year(birth_date) as birth_year
+from patients
+order by birth_year asc
 ```
