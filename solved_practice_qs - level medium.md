@@ -112,3 +112,20 @@ select distinct year(birth_date) as birth_year
 from patients
 order by birth_year asc
 ```
+**Q.16 Display the total amount of patients for each province. Order by descending.**
+```sql
+select pv.province_name as province_name, count(pt.patient_id) as patient_count
+from patients pt
+join province_names pv on pt.province_id = pv.province_id
+group by province_name
+order by patient_count desc
+```
+**Q.17 Show first name, last name and role of every person that is either patient or doctor.
+The roles are either "Patient" or "Doctor"**
+```sql
+select first_name, last_name, 'Patient' as role
+from patients
+union all
+select first_name, last_name, 'Doctor' as role
+from doctors
+```
