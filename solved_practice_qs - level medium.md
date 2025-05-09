@@ -129,3 +129,11 @@ union all
 select first_name, last_name, 'Doctor' as role
 from doctors
 ```
+**Q.18 Show all allergies ordered by popularity. Remove NULL values from query.**
+```sql
+select allergies, count(*) as total_diagnosis
+from patients
+where allergies not null
+group by allergies
+order by total_diagnosis desc
+```
