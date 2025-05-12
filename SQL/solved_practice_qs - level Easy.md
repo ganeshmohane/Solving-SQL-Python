@@ -11,3 +11,11 @@ select contact_name, address, city
 from customers
 where country not in ('Germany', 'Mexico', 'Spain')
 ```
+
+**Q.3 Show first name, last name, and the full province name of each patient.
+Example: 'Ontario' instead of 'ON'**
+```sql
+select p.first_name, p.last_name, prov.province_name
+from patients p
+join province_names prov on p.province_id = prov.province_id
+```
