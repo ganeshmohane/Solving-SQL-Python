@@ -144,3 +144,13 @@ from patients
 where year(birth_date) between 1970 and 1979
 order by birth_date asc
 ```
+**Q.20 For each doctor, display their id, full name, and the first and last admission date they attended.**
+```sql
+select doctor_id, 
+concat(first_name,' ', last_name) as full_name,
+min(admission_date) as first_admission_date, max(admission_date) as last_admission_date
+from doctors doc
+join admissions adm on doc.doctor_id = adm.attending_doctor_id
+group by doctor_id
+order by doctor_id
+```
