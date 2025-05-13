@@ -18,3 +18,15 @@ def count_vowels(string):
 result = count_vowels('example')
 print(result)
 ```
+**Q.3 Write a function called double_characters that accepts a string. The function should return a string, with each character in the original string doubled.
+If you send the function "now" as a parameter, it should return "nnooww" and if you send "123a!", it should return "112233aa!!"**
+```python
+def double_characters(string):
+	new_string = []
+	for i in string:
+		new_string.append(str(i)*2)
+		string = ''.join(new_string)
+	return string
+result = double_characters("test")
+print(result)
+```
