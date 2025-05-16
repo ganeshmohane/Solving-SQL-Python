@@ -162,3 +162,11 @@ from patients
 group by first_name
 having Count(*)<2
 ```
+**Q.22 For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.**
+```sql
+select concat(pt.first_name, ' ', pt.last_name) as patient_name, adm.diagnosis, 
+	   concat(d.first_name, ' ', d.last_name)
+from patients pt
+join admissions adm on pt.patient_id = adm.patient_id
+join doctors d on adm.attending_doctor_id = d.doctor_id
+```
