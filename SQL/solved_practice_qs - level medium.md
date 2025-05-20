@@ -170,3 +170,15 @@ from patients pt
 join admissions adm on pt.patient_id = adm.patient_id
 join doctors d on adm.attending_doctor_id = d.doctor_id
 ```
+**Q.23 Display a single row with max_visits, min_visits, average_visits where the maximum, minimum and average number of admissions per day is calculated. Average is rounded to 2 decimal places.**
+```sql
+select
+	max(number_of_visitors) as max_visits,
+    min(number_of_visitors) as min_visits,
+    round(avg(number_of_visitors),2) as average_visits
+from (
+	select admission_date, count(*) as number_of_visitors
+  	from admissions
+  	group by admission_date
+)
+```
