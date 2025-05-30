@@ -30,3 +30,17 @@ def double_characters(string):
 result = double_characters("test")
 print(result)
 ```
+
+**Q.4 The function reverse takes a string as input and returns that string in reverse order, with the opposite case.**
+```python
+def reverse(txt):
+	new_str = ""
+	for i in txt:
+		if i.isupper():
+			new_str = i.lower() + new_str
+		else:
+			new_str = i.upper() + new_str
+	return new_str
+
+#short trick: use [::-1].swapcase()
+```
