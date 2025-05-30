@@ -144,3 +144,41 @@ from patients
 where year(birth_date) between 1970 and 1979
 order by birth_date asc
 ```
+**Q.20 For each doctor, display their id, full name, and the first and last admission date they attended.**
+```sql
+select doctor_id, 
+concat(first_name,' ', last_name) as full_name,
+min(admission_date) as first_admission_date, max(admission_date) as last_admission_date
+from doctors doc
+join admissions adm on doc.doctor_id = adm.attending_doctor_id
+group by doctor_id
+order by doctor_id
+```
+**Q.21 Show unique first names from the patients table which only occurs once in the list.
+For example, if two or more people are named 'John' in the first_name column then don't include their name in the output list. If only 1 person is named 'Leo' then include them in the output.**
+```sql
+select first_name
+from patients
+group by first_name
+having Count(*)<2
+```
+**Q.22 For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.**
+```sql
+select concat(pt.first_name, ' ', pt.last_name) as patient_name, adm.diagnosis, 
+	   concat(d.first_name, ' ', d.last_name)
+from patients pt
+join admissions adm on pt.patient_id = adm.patient_id
+join doctors d on adm.attending_doctor_id = d.doctor_id
+```
+**Q.23 Display a single row with max_visits, min_visits, average_visits where the maximum, minimum and average number of admissions per day is calculated. Average is rounded to 2 decimal places.**
+```sql
+select
+	max(number_of_visitors) as max_visits,
+    min(number_of_visitors) as min_visits,
+    round(avg(number_of_visitors),2) as average_visits
+from (
+	select admission_date, count(*) as number_of_visitors
+  	from admissions
+  	group by admission_date
+)
+```
